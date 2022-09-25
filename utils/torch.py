@@ -15,6 +15,14 @@ def get_transform() -> transforms.Compose:
     ])
     return transform
 
+def get_inv_transform() -> transforms.Compose:
+    invTran = transforms.Compose([ transforms.Normalize(mean = [ 0., 0., 0. ],
+                                                        std = [ 1/0.3132, 1/0.3160, 1/0.3187 ]),
+                                transforms.Normalize(mean = [ -0.7932, -0.7864, -0.7827 ],
+                                                    std = [ 1., 1., 1. ]),
+                                ])
+    return invTran
+
 def get_data_dirs() -> Tuple:
     data_path = Path("data/")
     amazon_dir = data_path / "domain1/images"
